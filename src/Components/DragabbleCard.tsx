@@ -1,16 +1,6 @@
-import { snapshot } from "node:test";
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
-import styled from "styled-components";
 
-
-const Card = styled.div<{isDragging:boolean}>`
-  border-radius: 5px;
-  margin-bottom: 5px; 
-  padding: 10px 10px;
-  background-color: ${(props) => props.isDragging ? "#74b9ff" : props.theme.cardColor};
-  box-shadow:${props => props.isDragging ? "0px 2px 5px rgba(0, 0, 0, 0.05)" : "none"} 
-`;
 
 interface IDragabbleCardProps {
     toDoId: number;
@@ -20,14 +10,14 @@ interface IDragabbleCardProps {
 
 function DragabbleCard({toDoId, index, toDoText}:IDragabbleCardProps){
     return(
-        <Draggable  draggableId={toDoId + ""} index={index}>
+        <Draggable  draggableId={toDoId.toString()} index={index}>
         {(magic, snapshot) =>  (
-           <Card
-           isDragging={snapshot.isDragging}
+           <li
            ref={magic.innerRef} {...magic.draggableProps} {...magic.dragHandleProps}
+           className={`bg-white p-2 rounded-md mb-2 ${snapshot.isDragging ? "shadow-lg bg-blue-300": ""}`}
            >
           {toDoText}
-          </Card>
+          </li>
           )}
       </Draggable>
     );
