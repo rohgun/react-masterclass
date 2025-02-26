@@ -1,10 +1,10 @@
 import { useLocation } from "react-router-dom";
-import Footer from "./Components/Footer";
 import { useQueries, useQuery } from "react-query";
-import { getMovieSearch } from "../api";
-import { CategoryRow } from "./Styles/HomeStyled";
-import Slide from "./Components/Slide";
 import { useEffect } from "react";
+import Footer from "./Routes/Components/Footer";
+import Slide from "./Routes/Components/Slide";
+import { CategoryRow } from "./Routes/Styles/HomeStyled";
+import { getMovieSearch } from "./api";
 
 function Search() {
     const location = useLocation();
